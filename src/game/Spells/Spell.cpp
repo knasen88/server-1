@@ -1329,16 +1329,19 @@ void Spell::DoAllEffectOnTarget(TargetInfo *target)
             {
                  ((Player*)m_caster)->CastItemCombatSpell(unitTarget, BASE_ATTACK);
             } 
-	    	//yoshgit pull from elysium that was denied cos of ""vanilla bug""
-		//https://github.com/elysium-project/server/pull/1029/files
-	    else if (m_spellInfo->IsFitToFamilyMask<CF_WARRIOR_SHIELD_BASH>() && m_spellInfo->SpellIconID == 280)//bash
-		    {
-                    ((Player*)m_caster)->CastItemCombatSpell(unitTarget, BASE_ATTACK);
-                }
-            else if (m_spellInfo->IsFitToFamilyMask<CF_WARRIOR_SHIELD_SLAM>()) //shield slam
-                {
-                    ((Player*)m_caster)->CastItemCombatSpell(unitTarget, BASE_ATTACK);
-                }
+            
+            // Shield Bash
+            else if (m_spellInfo->IsFitToFamilyMask<CF_WARRIOR_SHIELD_BASH>() && m_spellInfo->SpellIconID == 280)
+            {
+                 ((Player*)m_caster)->CastItemCombatSpell(unitTarget, BASE_ATTACK);
+            }
+
+            // Shield Slam
+            else if (m_spellInfo->IsFitToFamilyMask<CF_WARRIOR_SHIELD_SLAM>())
+            {
+                 ((Player*)m_caster)->CastItemCombatSpell(unitTarget, BASE_ATTACK);
+            }
+
             // special Paladin cases - trigger weapon procs despite not having EquippedItemClass
             else if (m_spellInfo->SpellFamilyName == SPELLFAMILY_PALADIN)
             {
